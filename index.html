@@ -31,7 +31,20 @@
   <script>
     var taxtahaekkanir = toflur.launahaekkanir();
     console.log(taxtahaekkanir);
-    d3.select(".jumbotron").append("p").text(taxtahaekkanir.toString());
+    //d3.select(".jumbotron").append("p").text(taxtahaekkanir.toString());
+    d3.select(".jumbotron").selectAll("p")
+    .data(taxtahaekkanir)
+    .enter()
+    .append("p")
+    .text(function(d) {return d.haekkun.toString() + "%";})
+    .style("color", function(d) {
+                                  if (d.launaflokkur == 4 || d.launaflokkur == 5)
+                                    return "blue";
+                                  else if (d.launaflokkur == 6 || d.launaflokkur == 7)
+                                    return "violet";
+                                  else if (d.launaflokkur >= 8)
+                                    return "red";
+    });
   </script>
 
   </body>

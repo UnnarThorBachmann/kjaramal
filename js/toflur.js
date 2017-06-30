@@ -1,3 +1,4 @@
+"use strict";
 /*
   Using the export pattern from page 192 in Eloquent Javascript to create a namespace toflur.
 */
@@ -171,7 +172,10 @@
 
       for (var launaflokkur in tafla1) {
         for (var threp in tafla1[launaflokkur]) {
-          arr.push(parseInt(tafla2[launaflokkur][threp]/tafla1[launaflokkur][threp]*100)-100);
+          arr.push({haekkun: parseInt(tafla2[launaflokkur][threp]/tafla1[launaflokkur][threp]*100)-100,
+                    launaflokkur: launaflokkur,
+                    threp: threp
+          });
         }
       }
       return arr;
