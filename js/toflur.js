@@ -1,3 +1,6 @@
+/*
+  Using the export pattern from page 192 in Eloquent Javascript to create a namespace toflur.
+*/
 (
   function(exports) {
     exports.desemberuppbot = 
@@ -161,7 +164,18 @@
       "17": {"0":533101,"1":545864,"2":558626,"3":571389,"4":584150,"5":596913,"6":609675,"7":622436,"8":635199},
       "18": {"0":558626,"1":572026,"2":585426,"3":598827,"4":612228,"5":625628,"6":639027,"7":652427,"8":665828}
     }; 
-  
+    exports.launahaekkanir = function () {
+      var tafla1 = this.launatafla01032013;
+      var tafla2 = this.launatafla01092016;
+      var arr = [];
+
+      for (var launaflokkur in tafla1) {
+        for (var threp in tafla1[launaflokkur]) {
+          arr.push(parseInt(tafla2[launaflokkur][threp]/tafla1[launaflokkur][threp]*100)-100);
+        }
+      }
+      return arr;
+    };
   }
 )(this.toflur = {})
  
