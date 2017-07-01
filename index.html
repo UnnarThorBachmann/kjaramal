@@ -36,14 +36,6 @@
       flex-wrap: wrap; 
       justify-content: space-around;
     }
-    div.left-bar {
-      width: 80%;
-
-    }
-    div.right-bar {
-      width: 15%;
-      align-self: baseline;
-    }
     div.hd {
       width: 10%;
       padding-left: 2%;
@@ -81,10 +73,12 @@
     .well > p {
        font-size: 14px;
     }
+    .hiden {
+      display: hidden;
+    }
     
   </style>
 </head>
-<!--Litinir í launatöflunni tákna dæmigerða stöðu kennara út frá kennslureynslu. Litirnir sem hafa mest af rauðum í sér (<svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(215,48,39)" stroke-width="3" fill="rgb(215,48,39)" /></svg> og <svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(252,141,89)" stroke-width="3" fill="rgb(252,141,89)" /></svg>) tákna dæmigerða launaflokka kennara undir þrítugu. Ljósustu litirnir (<svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(254,224,144)" stroke-width="3" fill="rgb(254,224,144)" /></svg> og <svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(224,243,248)" stroke-width="3" fill="rgb(224,243,248)" /></svg>) dæmigerða liti kennara á aldrinum 30-38 ára. Þeir litir sem hafa mest af bláum lit (<svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(145,191,219)" stroke-width="3" fill="rgb(145,191,219)" /></svg> og <svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(69,117,180)" stroke-width="3" fill="rgb(69,117,180)" /></svg>) eru dæmigerðir launaflokkar kennara yfir 38 ára aldri.-->
   <body>
     <div class="main">
       <!--
@@ -92,32 +86,37 @@
         <h2>Nokkrar launamyndir <small>framhaldsskólar</small></h2>
       </div>-->
       <div class="well well-lg">
-        <div class="carosel-container">
-          <div class="left-bar">     
-            <h3 display="inline">Breytingar á launatöflu á samningstímanum</h3>
-            <p>Þessi tafla sýnir prósentuhækkanir á launatöflu frá frá 2013 til 2016 vegna núverandi kjarasamnings. Í hverjum reit er prósentuhækkun viðkomandi launaflokks og þreps í hlutfalli við sjálfan sig. Kennurum er raðað í launaflokka út frá menntun (grunnröðun) og svo starfsreynslu. Lituðu línurnar í töflunni tákna dæmigerða launaflokka kennara út frá grunnröðun (masterspróf og kennsluréttindi) og starfsreynslu.
-            </p>
-            <div class="yfirtafla">
-            <div class="tafla2">
-              <div class="hd"></div>
-              <div class="hd">0.</div>
-              <div class="hd">1.</div>
-              <div class="hd">2.</div>
-              <div class="hd">3.</div>
-              <div class="hd">4.</div>
-              <div class="hd">5.</div>
-              <div class="hd">6.</div>
-              <div class="hd">7.</div>
-              <div class="hd">8.</div>         
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#kynning" aria-controls="kynning" role="tab" data-toggle="tab">Kynning</a></li>
+        <li role="presentation"><a href="#launatafla" aria-controls="launatafla" role="tab" data-toggle="tab">Launatafla</a></li>
+      </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane" id="launatafla">    
+              <h3 display="inline">Breytingar á launatöflu á samningstímanum</h3>
+              <p>Þessi tafla sýnir prósentuhækkanir á launatöflu frá frá 2013 til 2016 vegna núverandi kjarasamnings. Í hverjum reit er prósentuhækkun viðkomandi launaflokks og þreps í hlutfalli við sjálfan sig. Kennurum er raðað í launaflokka út frá menntun (grunnröðun) og svo starfsreynslu. Lituðu línurnar í töflunni tákna dæmigerða launaflokka kennara út frá grunnröðun (masterspróf og kennsluréttindi) og starfsreynslu.
+              </p>
+              <div class="yfirtafla">
+                <div class="tafla2">
+                  <div class="hd"></div>
+                  <div class="hd">0.</div>
+                  <div class="hd">1.</div>
+                  <div class="hd">2.</div>
+                  <div class="hd">3.</div>
+                  <div class="hd">4.</div>
+                  <div class="hd">5.</div>
+                  <div class="hd">6.</div>
+                  <div class="hd">7.</div>
+                  <div class="hd">8.</div>         
+                </div>
+                <div class="tafla">
+                </div>
+              </div>
             </div>
-            <div class="tafla">
-            </div>
-            </div>
-          </div>
-          <div class="btn-group-vertical right-bar" role="group" aria-label="...">
-            <a type="button" class="btn btn-default">Kynning</a>
-            <a type="button" class="btn btn-default">Launatafla</a>
-          </div>    
+            <div role="tabpanel" class="tab-pane active" id="kynning">    
+              <h3 display="inline">Kynning</h3>
+              <p>Litinir í launatöflunni tákna dæmigerða stöðu kennara út frá kennslureynslu. Litirnir sem hafa mest af rauðum í sér (<svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(215,48,39)" stroke-width="3" fill="rgb(215,48,39)" /></svg> og <svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(252,141,89)" stroke-width="3" fill="rgb(252,141,89)" /></svg>) tákna dæmigerða launaflokka kennara undir þrítugu. Ljósustu litirnir (<svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(254,224,144)" stroke-width="3" fill="rgb(254,224,144)" /></svg> og <svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(224,243,248)" stroke-width="3" fill="rgb(224,243,248)" /></svg>) dæmigerða liti kennara á aldrinum 30-38 ára. Þeir litir sem hafa mest af bláum lit (<svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(145,191,219)" stroke-width="3" fill="rgb(145,191,219)" /></svg> og <svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(69,117,180)" stroke-width="3" fill="rgb(69,117,180)" /></svg>) eru dæmigerðir launaflokkar kennara yfir 38 ára aldri.
+              </p>        
+            </div>  
         </div>     
       </div>
     </div>
@@ -126,14 +125,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.3.13/d3.js"></script>
 
   <script>
-    
+    $('.sidebar').on('click', function () {
+      console.log($(".canvas"));
+    })
     var taxtahaekkanir = toflur.launahaekkanir();
-
     var toflufall = function(fylki) {
       for (var i = 1; i <= 16; i++) {
         var a = fylki.slice((i-1)*9,(i-1)*9+9);
         a.unshift({haekkun: i, launaflokkur: -1, threp: -1});
-
         d3.select(".tafla").selectAll("div").filter(".hd")
         .data(a)
         .enter()
