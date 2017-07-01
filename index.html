@@ -13,12 +13,13 @@
 
   <style>
     body {
-      background-color: whitesmoke;
+      background-color: rgba(224,243,248,1);/*#61CDF5;#f1f1f2;*/
+      color: #666;
     }
     div.main {
       margin-top: 1%;
-      margin-left: 5%;
-      margin-right: 5%;
+      margin-left: 3%;
+      margin-right: 3%;
     }
     div.tafla {
       display: flex;
@@ -64,19 +65,37 @@
       background-color: rgba(69,117,180,0.4);
     }
     .well  {
-      background-color: lightgray;
+      background-color: #ffffff;
+      background-image: none;
       padding-left: 2%;
       padding-right: 2%;
       padding-top: 1%;
      
     }
-    .well > p {
-       font-size: 14px;
-    }
-    .hiden {
-      display: hidden;
-    }
+    .well {
+      border: 1px solid #666;
     
+    }
+    .well > p {
+       font-size: 20px;
+    }
+    a {
+      color: rgba(69,117,180,1);
+      font-size: 24px;
+    }
+    a:hover {
+      background-color: transparent;
+    }
+    .nav-tabs {
+      border-bottom: 1px solid #666;
+    }
+    .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+      color: #666;
+      background-color: #fff;
+      border: 1px solid #666;
+      border-bottom-color: transparent;
+      cursor: default;
+    }
   </style>
 </head>
   <body>
@@ -93,7 +112,7 @@
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane" id="launatafla">    
               <h3 display="inline">Breytingar á launatöflu á samningstímanum</h3>
-              <p>Þessi tafla sýnir prósentuhækkanir á launatöflu frá frá 2013 til 2016 vegna núverandi kjarasamnings. Í hverjum reit er prósentuhækkun viðkomandi launaflokks og þreps í hlutfalli við sjálfan sig. Kennurum er raðað í launaflokka út frá menntun (grunnröðun) og svo starfsreynslu. Lituðu línurnar í töflunni tákna dæmigerða launaflokka kennara út frá grunnröðun (masterspróf og kennsluréttindi) og starfsreynslu.
+              <p>Þessi tafla sýnir prósentuhækkanir á launatöflu frá frá 2013 til 2016 vegna núverandi kjarasamnings FF og fjármálaráðuneytisins. Í hverjum reit er prósentuhækkun viðkomandi launaflokks og þreps í hlutfalli við sjálfan sig. Kennurum er raðað í launaflokka út frá menntun (grunnröðun) og svo starfsreynslu. Lituðu línurnar í töflunni tákna dæmigerða launaflokka kennara út frá grunnröðun (masterspróf og kennsluréttindi) og starfsreynslu.
               </p>
               <div class="yfirtafla">
                 <div class="tafla2">
