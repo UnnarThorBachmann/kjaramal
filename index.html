@@ -12,6 +12,9 @@
   <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
   <style>
+    body {
+      background-color: whitesmoke;
+    }
     div.main {
       margin: 5%;
     }
@@ -27,19 +30,53 @@
     }
     div.hd {
       width: 10%;
-      border-style: solid;
-      border-width: 1px;
+      padding-left: 2%;
+      padding-right: 2%;
     }
+    div.yfirtafla {
+      background-color: white;
+      padding: 1%;
+    }
+    .young {
+      background-color: rgba(215,48,39,0.7);
+    }
+    .young2 {
+      background-color: rgba(252,141,89,0.7);
+    }
+    .middle {
+      background-color: rgba(254,224,144,0.7);
+    }
+    .middle2 {
+      background-color: rgba(224,243,248,0.7);
+    }
+    .old {
+      background-color: rgba(145,191,219,0.7);
+    }
+    .old2 {
+      background-color: rgba(69,117,180,0.7);
+    }
+    .jumbotron  {
+      background-color: lightgray;
+      padding: 2%;
+     
+    }
+    .jumbotron > p {
+       font-size: 16px;
+    }
+    
   </style>
 </head>
   <body>
     <div class="main">
-      <div class="page-header">
+      <!--<div class="page-header">
         <h1>Nokkrar launamyndir <small>framhaldsskólar</small></h1>
-      </div>
+      </div>-->
       <div class="jumbotron">
         <h2>Breytingar á launatöflu á samningstímanum</h2>
-        <p>Þessi tafla sýnir prósentuhækkanir á launatöflu frá frá 2013 til 2016 vegna núverandi kjarasamnings. Gerum ráð fyrir að kennari hafi masterspróf og kennsluréttindi. Litinir í launatöflunni tákna dæmigerða stöðu kennarans út frá kennslureynslu. Blái liturinn (<svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="blue" stroke-width="3" fill="blue" /></svg>) táknar kennara undir þrítugu, fjólublái liturinn (<svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="violet" stroke-width="3" fill="violet" /></svg>) táknar kennara á aldrinum 30-38 ára og sá rauði (<svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="red" stroke-width="3" fill="red" /></svg>) kennara yfir 38 ára aldri sem er kominn með alla launaflokka sem hægt er að fá fyrir kennslureynslu.</p>
+        <p>Þessi tafla sýnir prósentuhækkanir á launatöflu frá frá 2013 til 2016 vegna núverandi kjarasamnings. Í hverjum reit er prósentuhækkun viðkomandi launaflokks og þreps í hlutfalli við sjálfan sig. Kennurum er raðað í launaflokka út frá menntun (grunnröðun) og svo starfsreynslu. Lituðu línurnar í töflunni tákna dæmigerða launaflokka kennara út frá grunnröðun (masterspróf og kennsluréttindi) og starfsreynslu.
+
+         <!--Litinir í launatöflunni tákna dæmigerða stöðu kennara út frá kennslureynslu. Litirnir sem hafa mest af rauðum í sér (<svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(215,48,39)" stroke-width="3" fill="rgb(215,48,39)" /></svg> og <svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(252,141,89)" stroke-width="3" fill="rgb(252,141,89)" /></svg>) tákna dæmigerða launaflokka kennara undir þrítugu. Ljósustu litirnir (<svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(254,224,144)" stroke-width="3" fill="rgb(254,224,144)" /></svg> og <svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(224,243,248)" stroke-width="3" fill="rgb(224,243,248)" /></svg>) dæmigerða liti kennara á aldrinum 30-38 ára. Þeir litir sem hafa mest af bláum lit (<svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(145,191,219)" stroke-width="3" fill="rgb(145,191,219)" /></svg> og <svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(69,117,180)" stroke-width="3" fill="rgb(69,117,180)" /></svg>) eru dæmigerðir launaflokkar kennara yfir 38 ára aldri.--></p>
+        <div class="yfirtafla">
           <div class="tafla2">
             <div class="hd"></div>
             <div class="hd">0.</div>
@@ -53,42 +90,55 @@
             <div class="hd">8.</div>
             
           </div>
-          <div class="tafla"></div>         
+          <div class="tafla"></div>
+        </div>         
       </div>
     </div>
   <script src="js/toflur.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.3.13/d3.js"></script>
 
   <script>
+    
     var taxtahaekkanir = toflur.launahaekkanir();
-    //d3.select(".jumbotron").append("p").text(taxtahaekkanir.toString());
-    for (var i = 1; i <= 16; i++) {
-      var a = taxtahaekkanir.slice((i-1)*9,(i-1)*9+9);
-      a.unshift({haekkun: i, launaflokkur: -1, threp: -1});
 
-      d3.select(".tafla").selectAll("div").filter(".hd")
-      .data(a)
-      .enter()
-      .append("div")
-      .text(function(d) {
-              if (d.launaflokkur > 0)
-                return d.haekkun.toString() + "%";
-              else 
-                return d.haekkun + ".";
-            })
-      .style("color", function(d) {
-                                  if (d.launaflokkur == 5 || d.launaflokkur == 6)
-                                    return "blue";
-                                  else if (d.launaflokkur == 7 || d.launaflokkur == 8)
-                                    return "violet";
-                                  else if (d.launaflokkur >= 9 && d.launaflokkur <= 10)
-                                    return "red";
-    })
-    .attr("class","rod"+i.toString())
-    .style("width", "10%")
-    .style("border-width","1px")
-    .style("border-style","solid");
+    var toflufall = function(fylki) {
+      for (var i = 1; i <= 16; i++) {
+        var a = fylki.slice((i-1)*9,(i-1)*9+9);
+        a.unshift({haekkun: i, launaflokkur: -1, threp: -1});
+
+        d3.select(".tafla").selectAll("div").filter(".hd")
+        .data(a)
+        .enter()
+        .append("div")
+        .text(function(d) {
+                if (d.launaflokkur > 0)
+                  return d.haekkun.toString() + "%";
+                else 
+                  return d.haekkun + ".";
+              })
+        .attr("class", function(d) { 
+                        if (d.launaflokkur == 5)
+                          return "rod"+i.toString() + " young";
+                        else if (d.launaflokkur == 6)
+                          return "rod"+i.toString() + " young2";
+                        else if (d.launaflokkur == 7)
+                          return "rod"+i.toString() + " middle";
+                        else if (d.launaflokkur == 8)
+                          return "rod"+i.toString() + " middle2";
+                        else if (d.launaflokkur == 9)
+                          return "rod"+i.toString() + " old";
+                        else if (d.launaflokkur == 10)
+                          return "rod"+i.toString() + " old2";
+        })
+        .style("width", "10%")
+        .style("padding-left","2%")
+        .style("padding-right","2%")
+        .style("border-width","1px")
+        .style("border-style",function(d){return (d.launaflokkur < 0 ?"hidden":"solid")});
+      }
+
     }
+    toflufall(taxtahaekkanir);
     
   </script>
 

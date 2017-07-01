@@ -168,11 +168,12 @@
     exports.launahaekkanir = function () {
       var tafla1 = this.launatafla01032013;
       var tafla2 = this.launatafla01092016;
+      
       var arr = [];
 
       for (var launaflokkur in tafla1) {
         for (var threp in tafla1[launaflokkur]) {
-          arr.push({haekkun: parseInt(tafla2[launaflokkur][threp]/tafla1[launaflokkur][threp]*100)-100,
+          arr.push({haekkun: parseFloat(tafla2[launaflokkur][threp]/tafla1[launaflokkur][threp]*100-100).toFixed(0),
                     launaflokkur: launaflokkur,
                     threp: threp
           });
@@ -180,6 +181,7 @@
       }
       return arr;
     };
+   
   }
 )(this.toflur = {})
  
