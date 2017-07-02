@@ -14,7 +14,7 @@
   <style>
     body {
       background-color: rgba(224,243,248,1);/*#61CDF5;#f1f1f2;*/
-      color: #666;
+      color: black;
     }
     div.main {
       margin-top: 1%;
@@ -45,6 +45,8 @@
     div.yfirtafla {
       background-color: white;
       padding: 1%;
+      border: 1px solid rgba(0,0,0,0.1);
+
     }
     .young {
       background-color: rgba(215,48,39,0.4);
@@ -133,8 +135,27 @@
             </div>
             <div role="tabpanel" class="tab-pane active" id="kynning">    
               <h3 display="inline">Kynning</h3>
-              <p>Litinir í launatöflunni tákna dæmigerða stöðu kennara út frá kennslureynslu. Litirnir sem hafa mest af rauðum í sér (<svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(215,48,39)" stroke-width="3" fill="rgb(215,48,39)" /></svg> og <svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(252,141,89)" stroke-width="3" fill="rgb(252,141,89)" /></svg>) tákna dæmigerða launaflokka kennara undir þrítugu. Ljósustu litirnir (<svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(254,224,144)" stroke-width="3" fill="rgb(254,224,144)" /></svg> og <svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(224,243,248)" stroke-width="3" fill="rgb(224,243,248)" /></svg>) dæmigerða liti kennara á aldrinum 30-38 ára. Þeir litir sem hafa mest af bláum lit (<svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(145,191,219)" stroke-width="3" fill="rgb(145,191,219)" /></svg> og <svg height="20" width="20"><circle cx="10" cy="10" r="5" stroke="rgb(69,117,180)" stroke-width="3" fill="rgb(69,117,180)" /></svg>) eru dæmigerðir launaflokkar kennara yfir 38 ára aldri.
-              </p>        
+              <p> Þessari síðu er ætlað að skoða framhaldsskólakennara eftir launahækkanir 2013-2016 vegna hins svokallaða vinnumatssamnings. Ætlunin er bera saman mismunandi aldurshópa kennara skiptast í fimm hópa m.t.t. vinnuskyldu. Yngstu hóparnir eru hafði rauðleitir en hinir eldri bláleitir. Kennarar undir 30 ára aldri eru rauðir, kennarar á aldrinum 30-38 ára brúnleitir o.s.frv. 
+              </p>     
+              <svg width="400" height="60">
+                <g>
+                <rect x="50" y="20" width="30" height="30"
+                style="fill:#d7191c;stroke:black;stroke-width:1;opacity:1" />
+                <rect x="110" y="20" width="30" height="30"
+                style="fill:#fdae61;stroke:black;stroke-width:1;opacity:1" />
+                <rect x="170" y="20" width="30" height="30"
+                style="fill:#ffffbf;stroke:black;stroke-width:1;opacity:1" />
+                 <rect x="230" y="20" width="30" height="30"
+                style="fill:#abd9e9;stroke:black;stroke-width:1;opacity:1" />
+                 <rect x="290" y="20" width="30" height="30"
+                style="fill:#2c7bb6;stroke:black;stroke-width:1;opacity:1" />
+                </g>
+              </svg>
+
+              <p>Hér er gert ráð fyrir að kennarar séu með meistaranám og kennsluréttindi. Yngstu kennararnir raðast þá í flestum tilfellum í launaflokk fimm til sex. Kennarar á aldrinum 30-37 ára raðast í launaflokka sjö til átta. Kennarar á aldrinum 38-54 ára í launaflokka átta til 10. Kennarar eldri en það raðast í launaflokk 10. Röðun í launaflokka er háð stofnanasamningum sem eru breytilegir milli skóla en hafa ekki verið endurskoðaðir í kjölfar kjarasamninganna. Forsendan hér að ofan kann því ekki að ná utan um öll tilvik en ætti að vera lýsandi í mjög mörgum.</p>
+
+              <p> Til að hafa samanburðinn sem einfaldastan verða eingöngu bornir saman hópar í bóknámi: Félagsgreinum, íslensku, raungreinum, sjúkraliðanámi, stærðfræði og tungumálum.</p>
+           
             </div>  
         </div>     
       </div>
@@ -180,6 +201,7 @@
         .style("padding-left","2%")
         .style("padding-right","2%")
         .style("border-width","1px")
+        .style("border-color","rgba(0,0,0,0.1")
         .style("border-style",function(d){return (d.launaflokkur < 0 ?"hidden":"solid")});
       }
 
