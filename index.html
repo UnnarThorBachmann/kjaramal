@@ -36,6 +36,12 @@
       flex-direction: row;
       flex-wrap: wrap;
     }
+    div.tafla5 {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
     div.carosel-container {
       display: flex;
       flex-direction: row;
@@ -103,6 +109,9 @@
       border-bottom-color: transparent;
       cursor: default;
     }
+    div.fyrirsogn {
+      padding-left: 1%;
+    }
   </style>
 </head>
   <body>
@@ -165,8 +174,11 @@
             </div>
             <div role="tabpanel" class="tab-pane" id="launatafla2">    
               <h3 display="inline">Breytingar á launatöflu á samningstímanum</h3>
-              <p>Þessi tafla sýnir prósentuhækkanir á launatöflu frá frá 2013 til 2016 vegna núverandi kjarasamnings FF og fjármálaráðuneytisins. Í hverjum reit er hlutfallslegur ávinningur hvers þreps við það að færa sig úr launaflokki fimm árið 2016 miðað við 2013. Talan 4% merkir að viðkomandi launaflokkur og launaþrep gefa nú 4% launahækkun umfram árið 2013. 
+              <p>Þessi tafla hlutfallslega vöxt í grunnlaunum milli þrepa í launaflokkum árið 2013 annars vegar og hins vegar 2016. Árið 2013 þýddi hækkun um launaflokk 4% hækkun en nú þýðir nú 5-6%. 
               <div class="yfirtafla">
+                <div class="fyrirsogn">
+                  <h4>2013</h4>
+                </div>
                 <div class="tafla2">
                   <div class="hd"></div>
                   <div class="hd">0.</div>
@@ -180,6 +192,14 @@
                   <div class="hd">8.</div>         
                 </div>
                 <div class="tafla3">
+                </div>
+                <div class="fyrirsogn">
+                  <h4>2016</h4>
+                </div>
+                <div class="tafla4">
+                  
+                </div>
+                <div class="tafla5">
                 </div>
               </div>
             </div>
@@ -197,9 +217,11 @@
     
     var taxtahaekkanir = toflur.launahaekkanir();
     var taxtahaekkanir2 = toflur.launahaekkanir2();
+    var taxtahaekkanir3 = toflur.launahaekkanir3();
+
     //console.log(generator.generate2013());
-    var toflufall = function(fylki,leitarstrengur) {
-      for (var i = 1; i <= 16; i++) {
+    var toflufall = function(fylki,leitarstrengur,lf1,lf2) {
+      for (var i = lf1; i <= lf2; i++) {
         var a = fylki.slice((i-1)*9,(i-1)*9+9);
         a.unshift({haekkun: i, launaflokkur: -1, threp: -1});
         d3.select(leitarstrengur).selectAll("div").filter(".hd")
@@ -235,8 +257,9 @@
       }
 
     }
-    toflufall(taxtahaekkanir,".tafla");
-    toflufall(taxtahaekkanir2,".tafla3");
+    toflufall(taxtahaekkanir,".tafla",1,16);
+    toflufall(taxtahaekkanir2,".tafla3",5,10);
+    toflufall(taxtahaekkanir3,".tafla5",5,10);
   </script>
 
   </body>
