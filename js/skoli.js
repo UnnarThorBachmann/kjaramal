@@ -227,7 +227,7 @@
   	exports.aldur = ['30 ára-','30-37 ára','38-54 ára','55-59 ára','60 ára+'];
   	exports.launatafla = {'30 ára-': [{'launaflokkur': '5','threp': '4'}, {'launaflokkur': '6','threp': '4'}],
   						'30-37 ára': [{'launaflokkur': '7','threp': '4'}, {'launaflokkur': '8','threp': '4'}],
-  						'38-54 ára':  [{'launaflokkur': '8','threp': '4'}, {'launaflokkur': '9','threp': '4'}, {'launaflokkur': '10','threp': '4'}],
+  						'38-54 ára':  [{'launaflokkur': '9','threp': '4'}, {'launaflokkur': '10','threp': '4'}],
   						'55-59 ára': [{'launaflokkur': '10','threp': '4'}],
   						'60 ára+': [{'launaflokkur': '10','threp': '4'}]
   	
@@ -248,21 +248,30 @@
   	
   	};
 
-	exports.generate2013 = function(nemendafjoldi,afangafjoldi) {
+	exports.generate2013 = function(afangafjoldi) {
 		var einingar = 3*afangafjoldi;
 		var timar = 2*einingar;
 		var kennarar = [];
-		var items = [];
+		
 		for (var age in exports.launatafla) {
 			for (var lf in exports.launatafla[age]) {
-				items.push(exports.launatafla[age][lf])
+				var item = exports.launatafla[age][lf];
+				item.age = age;
+				item.color = exports.litir[age];
+				item.floor = exports.gomlugolf[age];
+				item.basicSalary = exports.launatafla01032013[item.launaflokkur][item.threp];
+				item.salary = item.basicSalary + item.basicSalary*0.010385*18*1.3*(24-item.floor)/6;
+				kennarar.push(item);
 			}
 		}
+		var k0 = kennarar[0];
+		kennarar = kennarar.map(function(kennari) {
+			
+			kennari.diff = (parseFloat(kennari.salary/k0.salary)-1).toFixed(2)*100;
+			return kennari;
 
-		for (var item in items) {
-			kennarar = kennarar.concat(items);
-		}
-
+		},k0);
+		console.log(kennarar);
 	}
 	
   }
