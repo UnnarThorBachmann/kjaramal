@@ -31,6 +31,11 @@
       flex-direction: row;
       flex-wrap: wrap;
     }
+    div.tafla3 {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
     div.carosel-container {
       display: flex;
       flex-direction: row;
@@ -110,29 +115,9 @@
       <ul class="nav nav-tabs">
         <li role="presentation" class="active"><a href="#kynning" aria-controls="kynning" role="tab" data-toggle="tab">Kynning</a></li>
         <li role="presentation"><a href="#launatafla" aria-controls="launatafla" role="tab" data-toggle="tab">Launatafla</a></li>
+        <li role="presentation"><a href="#launatafla2" aria-controls="launatafla2" role="tab" data-toggle="tab">Launatafla 2</a></li>
       </ul>
         <div class="tab-content">
-            <div role="tabpanel" class="tab-pane" id="launatafla">    
-              <h3 display="inline">Breytingar á launatöflu á samningstímanum</h3>
-              <p>Þessi tafla sýnir prósentuhækkanir á launatöflu frá frá 2013 til 2016 vegna núverandi kjarasamnings FF og fjármálaráðuneytisins. Í hverjum reit er prósentuhækkun viðkomandi launaflokks og þreps í hlutfalli við sjálfan sig. Kennurum er raðað í launaflokka út frá menntun (grunnröðun) og svo starfsreynslu. Lituðu línurnar í töflunni tákna dæmigerða launaflokka kennara út frá grunnröðun (masterspróf og kennsluréttindi) og starfsreynslu.
-              </p>
-              <div class="yfirtafla">
-                <div class="tafla2">
-                  <div class="hd"></div>
-                  <div class="hd">0.</div>
-                  <div class="hd">1.</div>
-                  <div class="hd">2.</div>
-                  <div class="hd">3.</div>
-                  <div class="hd">4.</div>
-                  <div class="hd">5.</div>
-                  <div class="hd">6.</div>
-                  <div class="hd">7.</div>
-                  <div class="hd">8.</div>         
-                </div>
-                <div class="tafla">
-                </div>
-              </div>
-            </div>
             <div role="tabpanel" class="tab-pane active" id="kynning">    
               <h3 display="inline">Kynning</h3>
               <p> Þessari síðu er ætlað að skoða framhaldsskólakennara eftir launahækkanir 2013-2016 vegna hins svokallaða vinnumatssamnings. Ætlunin er bera saman mismunandi aldurshópa kennara skiptast í fimm hópa m.t.t. vinnuskyldu. Yngstu hóparnir eru hafði rauðleitir en hinir eldri bláleitir. Kennarar undir 30 ára aldri eru rauðir, kennarar á aldrinum 30-38 ára brúnleitir o.s.frv. 
@@ -155,25 +140,69 @@
               <p>Hér er gert ráð fyrir að kennarar séu með meistaranám og kennsluréttindi. Yngstu kennararnir raðast þá í flestum tilfellum í launaflokk fimm til sex. Kennarar á aldrinum 30-37 ára raðast í launaflokka sjö til átta. Kennarar á aldrinum 38-54 ára í launaflokka átta til 10. Kennarar eldri en það raðast í launaflokk 10. Röðun í launaflokka er háð stofnanasamningum sem eru breytilegir milli skóla en hafa ekki verið endurskoðaðir í kjölfar kjarasamninganna. Forsendan hér að ofan kann því ekki að ná utan um öll tilvik en ætti að vera lýsandi í mjög mörgum.</p>
 
               <p> Til að hafa samanburðinn sem einfaldastan verða eingöngu bornir saman hópar í bóknámi: Félagsgreinum, íslensku, raungreinum, sjúkraliðanámi, stærðfræði og tungumálum.</p>
-           
+             
             </div>  
+            <div role="tabpanel" class="tab-pane" id="launatafla">    
+              <h3 display="inline">Breytingar á launatöflu á samningstímanum</h3>
+              <p>Þessi tafla sýnir prósentuhækkanir á launatöflu frá frá 2013 til 2016 vegna núverandi kjarasamnings FF og fjármálaráðuneytisins. Í hverjum reit er prósentuhækkun viðkomandi launaflokks og þreps í hlutfalli við sjálfan sig. Kennurum er raðað í launaflokka út frá menntun (grunnröðun) og svo starfsreynslu. Lituðu línurnar í töflunni tákna dæmigerða launaflokka kennara út frá grunnröðun (masterspróf og kennsluréttindi) og starfsreynslu. Rauðleitu flokkarnir (5-6) standa fyrir launaflokka yngstu kennaranna en þeir bláu (9-10) tákna launaflokka þeirra elstu. 
+              </p>
+              <div class="yfirtafla">
+                <div class="tafla2">
+                  <div class="hd"></div>
+                  <div class="hd">0.</div>
+                  <div class="hd">1.</div>
+                  <div class="hd">2.</div>
+                  <div class="hd">3.</div>
+                  <div class="hd">4.</div>
+                  <div class="hd">5.</div>
+                  <div class="hd">6.</div>
+                  <div class="hd">7.</div>
+                  <div class="hd">8.</div>         
+                </div>
+                <div class="tafla">
+                </div>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="launatafla2">    
+              <h3 display="inline">Breytingar á launatöflu á samningstímanum</h3>
+              <p>Þessi tafla sýnir prósentuhækkanir á launatöflu frá frá 2013 til 2016 vegna núverandi kjarasamnings FF og fjármálaráðuneytisins. Í hverjum reit er hlutfallslegur ávinningur hvers þreps við það að færa sig úr launaflokki fimm árið 2016 miðað við 2013. Talan 4% merkir að viðkomandi launaflokkur og launaþrep gefa nú 4% launahækkun umfram árið 2013. 
+              <div class="yfirtafla">
+                <div class="tafla2">
+                  <div class="hd"></div>
+                  <div class="hd">0.</div>
+                  <div class="hd">1.</div>
+                  <div class="hd">2.</div>
+                  <div class="hd">3.</div>
+                  <div class="hd">4.</div>
+                  <div class="hd">5.</div>
+                  <div class="hd">6.</div>
+                  <div class="hd">7.</div>
+                  <div class="hd">8.</div>         
+                </div>
+                <div class="tafla3">
+                </div>
+              </div>
+            </div>
+          
         </div>     
       </div>
     </div>
     
   <script src="js/toflur.js"></script>
+  <script src="js/skoli.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.3.13/d3.js"></script>
 
   <script>
-    $('.sidebar').on('click', function () {
-      console.log($(".canvas"));
-    })
+    
     var taxtahaekkanir = toflur.launahaekkanir();
-    var toflufall = function(fylki) {
+    var taxtahaekkanir2 = toflur.launahaekkanir2();
+    //console.log(generator.generate2013());
+    var toflufall = function(fylki,leitarstrengur) {
       for (var i = 1; i <= 16; i++) {
         var a = fylki.slice((i-1)*9,(i-1)*9+9);
         a.unshift({haekkun: i, launaflokkur: -1, threp: -1});
-        d3.select(".tafla").selectAll("div").filter(".hd")
+        d3.select(leitarstrengur).selectAll("div").filter(".hd")
         .data(a)
         .enter()
         .append("div")
@@ -206,8 +235,8 @@
       }
 
     }
-    toflufall(taxtahaekkanir);
-    
+    toflufall(taxtahaekkanir,".tafla");
+    toflufall(taxtahaekkanir2,".tafla3");
   </script>
 
   </body>

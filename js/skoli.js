@@ -118,7 +118,7 @@
 	    return 1;
 	  }
 	};
-	exportsKennari.prototype.vinnuskylda = function(klstChluti,vinnuskyldaTexti) {
+	exports.Kennari.prototype.vinnuskylda = function(klstChluti,vinnuskyldaTexti) {
 	   var vinnuskylda = 0;
 	   if (vinnuskyldaTexti === '30 ára-' ) {
 	      vinnuskylda = 720;
@@ -240,9 +240,28 @@
   						'60 ára+': "#2c7bb6"
   	
   	};
+  	exports.gomlugolf = {'30 ára-': 24,
+  						'30-37 ára': 24,
+  						'38-54 ára':  24,
+  						'55-59 ára': 23,
+  						'60 ára+': 19
+  	
+  	};
 
 	exports.generate2013 = function(nemendafjoldi,afangafjoldi) {
-		return [];
+		var einingar = 3*afangafjoldi;
+		var timar = 2*einingar;
+		var kennarar = [];
+		var items = [];
+		for (var age in exports.launatafla) {
+			for (var lf in exports.launatafla[age]) {
+				items.push(exports.launatafla[age][lf])
+			}
+		}
+
+		for (var item in items) {
+			kennarar = kennarar.concat(items);
+		}
 
 	}
 	
