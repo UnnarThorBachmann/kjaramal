@@ -328,9 +328,11 @@
 			}
 		}
 		var k0 = kennarar2.filter(
-			kennari => !kennari.skertur && kennari.age =="30 ára-" && kennari.synidaemi == sia && kennari.launaflokkur=="5")[0];
+			kennari => kennari.age =="30 ára-" && kennari.synidaemi == sia && kennari.launaflokkur=="5");
+		console.log(k0);
 		kennarar2 = kennarar2.map(function(kennari) {
-			kennari.diff = (parseFloat(kennari.salary/k0.salary)-1)*100;
+			var referenceSalary = (k0[0].salary + k0[1].salary)/2;
+			kennari.diff = (parseFloat(kennari.salary/referenceSalary)-1)*100;
 			return kennari;
 		},k0);
 		return kennarar2.filter(nyr => nyr.synidaemi == sia);			
