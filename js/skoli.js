@@ -90,13 +90,13 @@
 	  
 
 	  afangar.forEach(function(afangi){
-	    this.originalAfangar.push(new Afangi(afangi));
+	    this.originalAfangar.push(new exports.Afangi(afangi));
 	  },this);
 	  for (var i = 0; i < this.originalAfangar.length; i++) {
 	    this.originalAfangar[i].reikna_vinnumat();
 	  }
 	  afangar.forEach(function(afangi){
-	    this.afangar.push(new Afangi(afangi));
+	    this.afangar.push(new exports.Afangi(afangi));
 	  },this);
 
 	
@@ -158,7 +158,7 @@
 	exports.Kennari.prototype.heildarvinnumat = function() {
 	  var s = 0;
 	  for (var i=0; i < this.fjoldi; i++) {
-	    var raunvinnumat = this.originalAfangar[i].vinnumat()/parseFloat(100);
+	    var raunvinnumat = this.originalAfangar[i].vinnumat();
 	    s += raunvinnumat;
 	  }
 	  return s;
@@ -196,7 +196,7 @@
 	      } // end of for.
 	      var neFjAv = nfj/(j-i);
 	      var param = new Array(this.afangar[i].heiti,this.afangar[i].einingar,neFjAv,this.afangar[i].synid.heiti,this.afangar[i].hperweek,this.afangar[i].lengdKest);
-	      var shadow = new Afangi(param);
+	      var shadow = new exports.Afangi(param);
 	      shadow.reikna_vinnumat();
 	      for (var k = 0; k < this.originalAfangar.length; k++) {
 	        if ((j-i) == 2 && this.originalAfangar[k].heiti == this.afangar[i].heiti) {
@@ -232,7 +232,14 @@
   						'60 ára+': [{'launaflokkur': '10','threp': '4'}]
   	
   	};
-  	exports.afangar = ['Félagsgreinar','Íslenska','Raungreinar','Sjúkraliðanám','Stærðfræði','Tungumál'];
+  	exports.vinnuskylda = {'30 ára-': 720,
+  						'30-37 ára': 708,
+  						'38-54 ára':  696,
+  						'55-59 ára': 667,
+  						'60 ára+': 551
+  	
+  	};
+  	exports.flokkar = ['Félagsgreinar','Tungumál','Íslenska','Raungreinar','Stærðfræði',];
     exports.litir = {'30 ára-': "#d7191c",
   						'30-37 ára': "#fdae61;",
   						'38-54 ára':  "#ffffbf",
@@ -264,15 +271,66 @@
 				kennarar.push(item);
 			}
 		}
+		
 		var k0 = kennarar[0];
-		kennarar = kennarar.map(function(kennari) {
-			
-			kennari.diff = (parseFloat(kennari.salary/k0.salary)-1).toFixed(2)*100;
-			return kennari;
-
+		kennarar = kennarar.map(function(k) {	
+			k.diff = (parseFloat(k.salary/k0.salary)-1).toFixed(2)*100;
+			return k;
 		},k0);
-		console.log(kennarar);
-	}
+		return kennarar;
+	};
+	exports.helper2016 = function(nemendafjoldi,afangafjoldi,Kennari,launatafla,flokkar,litir,vinnuskylda,lf,f,skertur,age) {
+		var tafla = launatafla[age][lf];
+		var item2 = {"launaflokkur": tafla.launaflokkur, "threp": tafla.threp};
+		item2.age = age;
+		item2.color = litir[age];
+		item2.vinnuskylda = vinnuskylda[age];
+		item2.basicSalary = exports.launatafla01092016[item2.launaflokkur][item2.threp];
+		
+		item2.synidaemi = flokkar[f];
+		item2.skertur = [true,false][skertur];
+		item2.fjoldi = nemendafjoldi;
+		var afangafylki = [];
+		for (var i = 0; i < afangafjoldi; i++) {
+			if (item2.skertur)
+				afangafylki.push(["a",3,nemendafjoldi,item2.synidaemi,6,40]);
+			else
+				afangafylki.push([i.toString(),3,nemendafjoldi,item2.synidaemi,6,40]);
+		
+		}
+		var kennari2 = new Kennari("Siggi",afangafylki);
+		item2.vinnumat = kennari2.heildarvinnumat();
+		item2.salary = item2.basicSalary*(1 + Math.max(0,item2.vinnumat-item2.vinnuskylda)*0.010385/6);
+		return item2;
+			
+	};
+	exports.generate2016 = function(nemendafjoldi,afangafjoldi) {
+		var kennarar2 = [];
+		var Kennari = exports.Kennari;
+		var launatafla = exports.launatafla;
+		var flokkar = exports.flokkar;
+		var litir = exports.litir;
+		var vinnuskylda = exports.vinnuskylda;
+		for (var age in launatafla) {
+			for (var lf in launatafla[age]) {
+				for (var f in flokkar) {
+					for (var skertur in [true,false]) { 
+						
+						kennarar2.push(exports.helper2016(nemendafjoldi,
+							afangafjoldi,Kennari,launatafla,flokkar,litir,vinnuskylda,lf,f,skertur,age));
+
+					}
+				}
+			}
+		}
+		var k0 = kennarar2.filter(
+			kennari => !kennari.skertur && kennari.age =="30 ára-" && kennari.synidaemi =="Stærðfræði" && kennari.launaflokkur=="5")[0];
+		kennarar2 = kennarar2.map(function(kennari) {
+			kennari.diff = (parseFloat(kennari.salary/k0.salary)-1)*100;
+			return kennari;
+		},k0);
+		return kennarar2;			
+	};
 	
   }
 )(this.generator = {})
