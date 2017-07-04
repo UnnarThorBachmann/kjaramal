@@ -241,7 +241,7 @@
   	};
   	exports.flokkar = ['Félagsgreinar','Tungumál','Íslenska','Raungreinar','Stærðfræði',];
     exports.litir = {'30 ára-': "#d7191c",
-  						'30-37 ára': "#fdae61;",
+  						'30-37 ára': "#fdae61",
   						'38-54 ára':  "#ffffbf",
   						'55-59 ára': "#abd9e9",
   						'60 ára+': "#2c7bb6"
@@ -259,7 +259,7 @@
 		var einingar = 3*afangafjoldi;
 		var timar = 2*einingar;
 		var kennarar = [];
-		
+		var id = 0;
 		for (var age in exports.launatafla) {
 			for (var lf in exports.launatafla[age]) {
 				var item = exports.launatafla[age][lf];
@@ -268,7 +268,9 @@
 				item.floor = exports.gomlugolf[age];
 				item.basicSalary = exports.launatafla01032013[item.launaflokkur][item.threp];
 				item.salary = item.basicSalary + item.basicSalary*0.010385*18*1.3*(24-item.floor)/6;
+				item.id = id;
 				kennarar.push(item);
+				id = id + 1;
 			}
 		}
 		
@@ -279,7 +281,7 @@
 		},k0);
 		return kennarar;
 	};
-	exports.helper2016 = function(nemendafjoldi,afangafjoldi,Kennari,launatafla,flokkar,litir,vinnuskylda,lf,f,skertur,age) {
+	exports.helper2016 = function(nemendafjoldi,afangafjoldi,Kennari,launatafla,flokkar,litir,vinnuskylda,lf,f,skertur,age,id) {
 		var tafla = launatafla[age][lf];
 		var item2 = {"launaflokkur": tafla.launaflokkur, "threp": tafla.threp};
 		item2.age = age;
@@ -301,35 +303,37 @@
 		var kennari2 = new Kennari("Siggi",afangafylki);
 		item2.vinnumat = kennari2.heildarvinnumat();
 		item2.salary = item2.basicSalary*(1 + Math.max(0,item2.vinnumat-item2.vinnuskylda)*0.010385/6);
+		item2.id = id;
 		return item2;
 			
 	};
-	exports.generate2016 = function(nemendafjoldi,afangafjoldi) {
+	exports.generate2016 = function(nemendafjoldi,afangafjoldi,sia) {
 		var kennarar2 = [];
 		var Kennari = exports.Kennari;
 		var launatafla = exports.launatafla;
 		var flokkar = exports.flokkar;
 		var litir = exports.litir;
 		var vinnuskylda = exports.vinnuskylda;
+		var id = 0;
 		for (var age in launatafla) {
 			for (var lf in launatafla[age]) {
 				for (var f in flokkar) {
 					for (var skertur in [true,false]) { 
 						
 						kennarar2.push(exports.helper2016(nemendafjoldi,
-							afangafjoldi,Kennari,launatafla,flokkar,litir,vinnuskylda,lf,f,skertur,age));
-
+							afangafjoldi,Kennari,launatafla,flokkar,litir,vinnuskylda,lf,f,skertur,age,id));
+						id = id + 1;
 					}
 				}
 			}
 		}
 		var k0 = kennarar2.filter(
-			kennari => !kennari.skertur && kennari.age =="30 ára-" && kennari.synidaemi =="Stærðfræði" && kennari.launaflokkur=="5")[0];
+			kennari => !kennari.skertur && kennari.age =="30 ára-" && kennari.synidaemi == sia && kennari.launaflokkur=="5")[0];
 		kennarar2 = kennarar2.map(function(kennari) {
 			kennari.diff = (parseFloat(kennari.salary/k0.salary)-1)*100;
 			return kennari;
 		},k0);
-		return kennarar2;			
+		return kennarar2.filter(nyr => nyr.synidaemi == sia);			
 	};
 	
   }

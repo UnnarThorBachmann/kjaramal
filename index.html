@@ -41,7 +41,10 @@
       flex-direction: row;
       flex-wrap: wrap;
     }
-
+    h4.fyrirsogn
+    {
+      padding-left: 3%;
+    }
     div.carosel-container {
       display: flex;
       flex-direction: row;
@@ -112,6 +115,17 @@
     div.fyrirsogn {
       padding-left: 1%;
     }
+    div.takkar {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+    div.takki {
+      
+    }
+    h1.nemfjoldi {
+      text-align: center;
+    }
   </style>
 </head>
   <body>
@@ -125,6 +139,8 @@
         <li role="presentation" class="active"><a href="#kynning" aria-controls="kynning" role="tab" data-toggle="tab">Kynning</a></li>
         <li role="presentation"><a href="#launatafla" aria-controls="launatafla" role="tab" data-toggle="tab">Launatafla</a></li>
         <li role="presentation"><a href="#launatafla2" aria-controls="launatafla2" role="tab" data-toggle="tab">Launatafla 2</a></li>
+        <li role="presentation"><a href="#hreyfimynd4" aria-controls="hreyfimynd4" role="tab" data-toggle="tab">4 áfangar</a></li>
+
       </ul>
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="kynning">    
@@ -203,6 +219,35 @@
                 </div>
               </div>
             </div>
+            <div role="tabpanel" class="tab-pane" id="hreyfimynd4">    
+              <h3 display="inline">Fjórir áfangar</h3>
+              <p>Loru  ypsum
+              
+              <div class="yfirtafla" id="h4">
+              <div class="takkar">
+                <div class="takki">
+                  <h1 class="nemfjoldi" id="nemfj">17</h1>
+                  <button type="button" class="btn btn-primary" aria-label="left" id="minnka">
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                  </button>
+                  <button type="button" class="btn btn-primary takki" aria-label="right" id="haekka">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </div>
+              <h4 class="fyrirsogn">2013</h4>
+              <svg id="myndGamlir"></svg>
+              <h4 class="fyrirsogn">Stærðfræðikennarar 2016</h4>
+              <svg id="myndStaerdfraedi"></svg>
+              <h4 class="fyrirsogn">Íslenskukennarar 2016</h4>
+              <svg id="myndIslenska"></svg>
+              <h4 class="fyrirsogn">Tungumálakennarar 2016</h4>
+              <svg id="myndTungumal"></svg>
+              <h4 class="fyrirsogn">Raungreinar 2016</h4>
+              <svg id="myndRaungreinar"></svg>
+              <h4 class="fyrirsogn">Félagsgreinar 2016</h4>
+              <svg id="myndFelagsgreinar"></svg>
+            </div>
           
         </div>     
       </div>
@@ -257,12 +302,76 @@
       }
 
     }
+    var addSeq = function (data,x,id,height) {
+      var seq = d3.select(id).html("").attr("width","400px").attr("height",height).selectAll('circle.node').data(data, function (d) {
+        return d.id;
+      });
+
+      seq.enter().append("circle").attr("class", "circle")
+        .attr("cx", function (d) {
+        return x(d.diff);
+      })
+      .attr("cy", function (d) {
+        if (id === "#myndGamlir")
+          return 5;
+
+        if (d.vinnuskylda == 720)
+          return 15;
+        else if (d.vinnuskylda == 708)
+          return 30;
+        else if (d.vinnuskylda == 696)
+          return 45;
+        else if (d.vinnuskylda == 667)
+          return 60;
+        else
+          return 75;
+      })
+      .attr("r", 5)
+      .style("fill", function(d) {
+        
+        return d.color;
+      })
+      .style("stroke", "black")
+      .style("stroke-width", 0.5);
+
+      seq.exit().remove();
+    };
+    var x = d3.scale.linear().domain([-10,70]).range([0,380]);
+    
+    var generateSeq = function(fjoldi) {
+      var gamlir = generator.generate2013(4);
+      var nyirIslenska = generator.generate2016(fjoldi,4,'Íslenska');
+      var nyirFelagsgreinar = generator.generate2016(fjoldi,4,'Félagsgreinar');
+      var nyirTungumal = generator.generate2016(fjoldi,4,'Tungumál');
+      var nyirRaungreinar = generator.generate2016(fjoldi,4,'Raungreinar');
+      var nyirStaerdfraedi = generator.generate2016(fjoldi,4,'Stærðfræði');
+      
+      
+      addSeq(gamlir,x,"#myndGamlir","20px")
+      addSeq(nyirStaerdfraedi,x,"#myndStaerdfraedi","80px");
+      addSeq(nyirIslenska,x,"#myndIslenska","80px");
+      addSeq(nyirTungumal,x,"#myndTungumal","80px");
+      addSeq(nyirRaungreinar,x,"#myndRaungreinar","80px");
+      addSeq(nyirFelagsgreinar,x,"#myndFelagsgreinar","80px");
+    };
     toflufall(taxtahaekkanir,".tafla",1,16);
     toflufall(taxtahaekkanir2,".tafla3",5,10);
     toflufall(taxtahaekkanir3,".tafla5",5,10);
-    console.log(generator.generate2013(4));
-    console.log(generator.generate2016(28,4));
+    generateSeq(17)
+    
+    $('#minnka').on('click', function () {
+      var fj = parseInt(document.getElementById("nemfj").innerHTML);
+      fj = fj - 1;
+      document.getElementById("nemfj").innerHTML = fj;
+      generateSeq(fj);
 
+    })
+    $('#haekka').on('click', function () {
+      var fj = parseInt(document.getElementById("nemfj").innerHTML);
+      fj = fj + 1;
+      document.getElementById("nemfj").innerHTML = fj;
+      generateSeq(fj);
+    })
   </script>
 
   </body>
