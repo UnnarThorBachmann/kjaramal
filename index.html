@@ -130,19 +130,15 @@
 </head>
   <body>
     <div class="main">
-      <!--
-      <div class="page-header">
-        <h2>Nokkrar launamyndir <small>framhaldsskólar</small></h2>
-      </div>-->
       <div class="well well-lg">
-      <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#kynning" aria-controls="kynning" role="tab" data-toggle="tab">Kynning</a></li>
-        <li role="presentation"><a href="#launatafla" aria-controls="launatafla" role="tab" data-toggle="tab">Launatafla</a></li>
-        <li role="presentation"><a href="#launatafla2" aria-controls="launatafla2" role="tab" data-toggle="tab">Launatafla 2</a></li>
-        <li role="presentation"><a href="#hreyfimynd4" aria-controls="hreyfimynd4" role="tab" data-toggle="tab">4 áfangar</a></li>
-        <li role="presentation"><a href="#hreyfimynd5" aria-controls="hreyfimynd5" role="tab" data-toggle="tab">5 áfangar</a></li>
-
-      </ul>
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="active"><a href="#kynning" aria-controls="kynning" role="tab" data-toggle="tab">Kynning</a></li>
+          <li role="presentation"><a href="#launatafla" aria-controls="launatafla" role="tab" data-toggle="tab">Launatafla</a></li>
+          <li role="presentation"><a href="#launatafla2" aria-controls="launatafla2" role="tab" data-toggle="tab">Launatafla 2</a></li>
+          <li role="presentation"><a href="#hreyfimynd4" aria-controls="hreyfimynd4" role="tab" data-toggle="tab">4 áfangar</a></li>
+          <li role="presentation"><a href="#hreyfimynd5" aria-controls="hreyfimynd5" role="tab" data-toggle="tab">5 áfangar</a></li>
+          <li role="presentation"><a href="#hreyfimynd6" aria-controls="hreyfimynd6" role="tab" data-toggle="tab">4 áfangar 2</a></li>
+        </ul>
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="kynning">    
               <h3 display="inline">Kynning</h3>
@@ -165,8 +161,7 @@
 
               <p>Hér er gert ráð fyrir að kennarar séu með meistaranám og kennsluréttindi. Yngstu kennararnir raðast þá í flestum tilfellum í launaflokk fimm til sex. Kennarar á aldrinum 30-37 ára raðast í launaflokka sjö til átta. Kennarar á aldrinum 38-54 ára í launaflokka átta til 10. Kennarar eldri en það raðast í launaflokk 10. Röðun í launaflokka er háð stofnanasamningum sem eru breytilegir milli skóla en hafa ekki verið endurskoðaðir í kjölfar kjarasamninganna. Forsendan hér að ofan kann því ekki að ná utan um öll tilvik en ætti að vera lýsandi í mjög mörgum.</p>
 
-              <p> Til að hafa samanburðinn sem einfaldastan verða eingöngu bornir saman hópar í bóknámi: Félagsgreinum, íslensku, raungreinum, sjúkraliðanámi, stærðfræði og tungumálum.</p>
-             
+              <p> Til að hafa samanburðinn sem einfaldastan verða eingöngu bornir saman hópar í bóknámi: Félagsgreinum, íslensku, raungreinum, sjúkraliðanámi, stærðfræði og tungumálum.</p>  
             </div>  
             <div role="tabpanel" class="tab-pane" id="launatafla">    
               <h3 display="inline">Breytingar á launatöflu á samningstímanum</h3>
@@ -222,7 +217,7 @@
             </div>
             <div role="tabpanel" class="tab-pane" id="hreyfimynd4">    
               <h3 display="inline">Fjórir áfangar</h3>
-              <p>Loru  ypsum      
+              <p>Loru  ypsum</p>    
               <div class="yfirtafla" id="h4">
                 <div class="takkar">
                   <div class="takki">
@@ -251,34 +246,64 @@
             </div>
             <div role="tabpanel" class="tab-pane" id="hreyfimynd5">    
               <h3 display="inline">Fimm áfangar</h3>
-              <p>Loru  ypsum
+              <p>Loru  ypsum</p>
               
               <div class="yfirtafla" id="h5">
-              <div class="takkar">
-                <div class="takki">
-                  <h1 class="nemfjoldi" id="nemfj2">17</h1>
-                  <button type="button" class="btn btn-primary" aria-label="left" id="minnka2">
-                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                  </button>
-                  <button type="button" class="btn btn-primary takki" aria-label="right" id="haekka2">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                  </button>
+                <div class="takkar">
+                  <div class="takki">
+                    <h1 class="nemfjoldi" id="nemfj2">17</h1>
+                    <button type="button" class="btn btn-primary" aria-label="left" id="minnka2">
+                      <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-primary takki" aria-label="right" id="haekka2">
+                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                  </div>
                 </div>
+                <h4 class="fyrirsogn">2013</h4>
+                <svg id="myndGamlir2"></svg>
+                <h4 class="fyrirsogn">Stærðfræðikennarar 2016</h4>
+                <svg id="myndStaerdfraedi2"></svg>
+                <h4 class="fyrirsogn">Íslenskukennarar 2016</h4>
+                <svg id="myndIslenska2"></svg>
+                <h4 class="fyrirsogn">Tungumálakennarar 2016</h4>
+                <svg id="myndTungumal2"></svg>
+                <h4 class="fyrirsogn">Raungreinar 2016</h4>
+                <svg id="myndRaungreinar2"></svg>
+                <h4 class="fyrirsogn">Félagsgreinar 2016</h4>
+                <svg id="myndFelagsgreinar2"></svg>
               </div>
-              <h4 class="fyrirsogn">2013</h4>
-              <svg id="myndGamlir2"></svg>
-              <h4 class="fyrirsogn">Stærðfræðikennarar 2016</h4>
-              <svg id="myndStaerdfraedi2"></svg>
-              <h4 class="fyrirsogn">Íslenskukennarar 2016</h4>
-              <svg id="myndIslenska2"></svg>
-              <h4 class="fyrirsogn">Tungumálakennarar 2016</h4>
-              <svg id="myndTungumal2"></svg>
-              <h4 class="fyrirsogn">Raungreinar 2016</h4>
-              <svg id="myndRaungreinar2"></svg>
-              <h4 class="fyrirsogn">Félagsgreinar 2016</h4>
-              <svg id="myndFelagsgreinar2"></svg>
             </div>
-          
+            <div role="tabpanel" class="tab-pane" id="hreyfimynd6">    
+              <h3 display="inline">Fjórir áfangar 2</h3>
+              <p>Loru  ypsum</p>
+              <div class="yfirtafla" id="h6">
+                <div class="takkar">
+                  <div class="takki">
+                    <h1 class="nemfjoldi" id="nemfj3">17</h1>
+                    <button type="button" class="btn btn-primary" aria-label="left" id="minnka3">
+                      <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-primary takki" aria-label="right" id="haekka3">
+                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </div>
+                <!--
+                <h4 class="fyrirsogn">2013</h4>
+                <svg id="myndGamlir3"></svg><-->
+                <h4 class="fyrirsogn">Stærðfræðikennarar 2016</h4>
+                <svg id="myndStaerdfraedi3"></svg>
+                <h4 class="fyrirsogn">Íslenskukennarar 2016</h4>
+                <svg id="myndIslenska3"></svg>
+                <h4 class="fyrirsogn">Tungumálakennarar 2016</h4>
+                <svg id="myndTungumal3"></svg>
+                <h4 class="fyrirsogn">Raungreinar 2016</h4>
+                <svg id="myndRaungreinar3"></svg>
+                <h4 class="fyrirsogn">Félagsgreinar 2016</h4>
+                <svg id="myndFelagsgreinar3"></svg>
+              </div>
+            </div>
         </div>     
       </div>
     </div>
@@ -342,7 +367,7 @@
         return x(d.diff);
       })
       .attr("cy", function (d) {
-        if (id === "#myndGamlir2")
+        if (id === "#myndGamlir" || id === "#myndGamlir2" || id === "#myndGamlir3")
           return 5;
 
         if (d.vinnuskylda == 720)
@@ -367,14 +392,14 @@
       seq.exit().remove();
     };
     var x = d3.scale.linear().domain([-10,70]).range([0,380]);
-    
+    var x2 = d3.scale.linear().domain([30,100]).range([0,380]);
     var generateSeq = function(fjoldi) {
       var gamlir = generator.generate2013(4);
-      var nyirIslenska = generator.generate2016(fjoldi,4,'Íslenska');
-      var nyirFelagsgreinar = generator.generate2016(fjoldi,4,'Félagsgreinar');
-      var nyirTungumal = generator.generate2016(fjoldi,4,'Tungumál');
-      var nyirRaungreinar = generator.generate2016(fjoldi,4,'Raungreinar');
-      var nyirStaerdfraedi = generator.generate2016(fjoldi,4,'Stærðfræði');
+      var nyirIslenska = generator.generate2016y(fjoldi,4,'Íslenska');
+      var nyirFelagsgreinar = generator.generate2016y(fjoldi,4,'Félagsgreinar');
+      var nyirTungumal = generator.generate2016y(fjoldi,4,'Tungumál');
+      var nyirRaungreinar = generator.generate2016y(fjoldi,4,'Raungreinar');
+      var nyirStaerdfraedi = generator.generate2016y(fjoldi,4,'Stærðfræði');
       
       addSeq(gamlir,x,"#myndGamlir","20px")
       addSeq(nyirStaerdfraedi,x,"#myndStaerdfraedi","80px");
@@ -386,11 +411,11 @@
 
     var generateSeq2 = function(fjoldi) {
       var gamlir = generator.generate2013(5);
-      var nyirIslenska = generator.generate2016(fjoldi,5,'Íslenska');
-      var nyirFelagsgreinar = generator.generate2016(fjoldi,5,'Félagsgreinar');
-      var nyirTungumal = generator.generate2016(fjoldi,5,'Tungumál');
-      var nyirRaungreinar = generator.generate2016(fjoldi,5,'Raungreinar');
-      var nyirStaerdfraedi = generator.generate2016(fjoldi,5,'Stærðfræði');
+      var nyirIslenska = generator.generate2016y(fjoldi,5,'Íslenska');
+      var nyirFelagsgreinar = generator.generate2016y(fjoldi,5,'Félagsgreinar');
+      var nyirTungumal = generator.generate2016y(fjoldi,5,'Tungumál');
+      var nyirRaungreinar = generator.generate2016y(fjoldi,5,'Raungreinar');
+      var nyirStaerdfraedi = generator.generate2016y(fjoldi,5,'Stærðfræði');
       
       addSeq(gamlir,x,"#myndGamlir2","20px")
       addSeq(nyirStaerdfraedi,x,"#myndStaerdfraedi2","80px");
@@ -399,13 +424,28 @@
       addSeq(nyirRaungreinar,x,"#myndRaungreinar2","80px");
       addSeq(nyirFelagsgreinar,x,"#myndFelagsgreinar2","80px");
     };
+    var generateSeq3 = function(fjoldi) {
+      var gamlir = generator.generate2013(4);
+      var nyirIslenska = generator.generate2016z(fjoldi,4,'Íslenska');
+      var nyirFelagsgreinar = generator.generate2016z(fjoldi,4,'Félagsgreinar');
+      var nyirTungumal = generator.generate2016z(fjoldi,4,'Tungumál');
+      var nyirRaungreinar = generator.generate2016z(fjoldi,4,'Raungreinar');
+      var nyirStaerdfraedi = generator.generate2016z(fjoldi,4,'Stærðfræði');
+      
+      //addSeq(gamlir,x2,"#myndGamlir3","20px")
+      addSeq(nyirStaerdfraedi,x2,"#myndStaerdfraedi3","80px");
+      addSeq(nyirIslenska,x2,"#myndIslenska3","80px");
+      addSeq(nyirTungumal,x2,"#myndTungumal3","80px");
+      addSeq(nyirRaungreinar,x2,"#myndRaungreinar3","80px");
+      addSeq(nyirFelagsgreinar,x2,"#myndFelagsgreinar3","80px");
+    };
 
     toflufall(taxtahaekkanir,".tafla",1,16);
     toflufall(taxtahaekkanir2,".tafla3",5,10);
     toflufall(taxtahaekkanir3,".tafla5",5,10);
-    generateSeq(17)
-    generateSeq2(17)
-    
+    generateSeq(17);
+    generateSeq2(17);
+    generateSeq3(17);
     $('#minnka').on('click', function () {
       var fj = parseInt(document.getElementById("nemfj").innerHTML);
       fj = fj - 1;
@@ -431,6 +471,19 @@
       fj = fj + 1;
       document.getElementById("nemfj2").innerHTML = fj;
       generateSeq2(fj);
+    });
+    $('#minnka3').on('click', function () {
+      var fj = parseInt(document.getElementById("nemfj3").innerHTML);
+      fj = fj - 1;
+      document.getElementById("nemfj3").innerHTML = fj;
+      generateSeq3(fj);
+
+    });
+    $('#haekka3').on('click', function () {
+      var fj = parseInt(document.getElementById("nemfj3").innerHTML);
+      fj = fj + 1;
+      document.getElementById("nemfj3").innerHTML = fj;
+      generateSeq3(fj);
     });
   </script>
 

@@ -307,7 +307,7 @@
 		return item2;
 			
 	};
-	exports.generate2016 = function(nemendafjoldi,afangafjoldi,sia) {
+	exports.generate2016y = function(nemendafjoldi,afangafjoldi,sia) {
 		var kennarar2 = [];
 		var Kennari = exports.Kennari;
 		var launatafla = exports.launatafla;
@@ -329,13 +329,29 @@
 		}
 		var k0 = kennarar2.filter(
 			kennari => kennari.age =="30 ára-" && kennari.synidaemi == sia && kennari.launaflokkur=="5");
-		console.log(k0);
 		kennarar2 = kennarar2.map(function(kennari) {
 			var referenceSalary = (k0[0].salary + k0[1].salary)/2;
 			kennari.diff = (parseFloat(kennari.salary/referenceSalary)-1)*100;
 			return kennari;
 		},k0);
 		return kennarar2.filter(nyr => nyr.synidaemi == sia);			
+	};
+	exports.generate2016z = function(nemendafjoldi,afangafjoldi,sia) {
+		var gamlir = exports.generate2013(afangafjoldi);
+		var nyir = exports.generate2016y(nemendafjoldi,afangafjoldi,sia);
+		
+		nyir = nyir.map(function(kennari) {
+			var k0 = gamlir.filter(
+			k => k.age === kennari.age && k.launaflokkur === kennari.launaflokkur);
+			var referenceSalary = k0[0].salary;
+			kennari.diff = (parseFloat(kennari.salary/referenceSalary)-1)*100;
+
+			console.log(k0[0]);
+			//console.log(kennari.diff + " " + kennari.age);
+			return kennari;
+		}, gamlir);
+
+		return nyir.filter(nyr => nyr.synidaemi == sia);	
 	};
 	
   }
