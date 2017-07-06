@@ -224,6 +224,8 @@
 
 	exports.launatafla01032013 = toflur.launatafla01032013;
   	exports.launatafla01092016 = toflur.launatafla01092016;
+  	exports.desemberuppbot = toflur.desemberuppbot;
+  	exports.orlofsuppbot = toflur.orlofsuppbot;
   	exports.aldur = ['30 ára-','30-37 ára','38-54 ára','55-59 ára','60 ára+'];
   	exports.launatafla = {'30 ára-': [{'launaflokkur': '5','threp': '4'}, {'launaflokkur': '6','threp': '4'}],
   						'30-37 ára': [{'launaflokkur': '7','threp': '4'}, {'launaflokkur': '8','threp': '4'}],
@@ -255,6 +257,7 @@
   	};
 
 	exports.generate2013 = function(afangafjoldi) {
+		
 		var einingar = 3*afangafjoldi;
 		var timar = 2*einingar;
 		var kennarar = [];
@@ -267,7 +270,7 @@
 				item.floor = exports.gomlugolf[age];
 				item.basicSalary = exports.launatafla01032013[item.launaflokkur][item.threp];
 
-				item.laun= item.basicSalary + item.basicSalary*0.010385*18*1.3*(timar-item.floor)/6;
+				item.laun= item.basicSalary + item.basicSalary*0.010385*18*1.3*(timar-item.floor)/6 + (exports.desemberuppbot["2013"]+exports.orlofsuppbot["2013"])/12;
 				item.id = id;
 				item.synidaemi = "2013";
 				kennarar.push(item);
@@ -303,7 +306,7 @@
 		}
 		var kennari2 = new Kennari("Siggi",afangafylki);
 		item2.vinnumat = kennari2.heildarvinnumat();
-		item2.laun = item2.basicSalary*(1 + Math.max(0,item2.vinnumat-item2.vinnuskylda)*0.010385/6);
+		item2.laun = item2.basicSalary*(1 + Math.max(0,item2.vinnumat-item2.vinnuskylda)*0.010385/6)+(exports.desemberuppbot["2016"]+exports.orlofsuppbot["2016"])/12;
 		item2.id = id;
 		return item2;
 			
@@ -342,6 +345,7 @@
 			kennari.mismunur = (parseFloat(kennari.laun/referenceSalary)-1)*100;
 			return kennari;
 		});
+		kennarar = kennarar.filter(kennari => !kennari.skertur);
 		return kennarar;			
 	};
 	exports.generate2016z = function(nemendafjoldi,afangafjoldi) {
@@ -362,6 +366,44 @@
 		kennarar = kennarar.filter(kennari => kennari.synidaemi != "2013");
 		return kennarar;
 	};
-	
+	exports.generate2016w = function(nemendafjoldi,afangafjoldi) {
+		var kennarar = exports.helper20162(nemendafjoldi,afangafjoldi);
+		kennarar = kennarar.filter(kennari => kennari.synidaemi != "2013");
+		kennarar = kennarar.filter(kennari => !kennari.skertur);
+		kennarar = kennarar.map(function(kennari) {
+			
+
+			var k0 = kennarar.filter(kennariVidmid => kennariVidmid.aldur == kennari.aldur && kennariVidmid.launaflokkur == kennari.launaflokkur);
+			k0.sort(function(a,b) {
+				return parseInt(a.laun)-parseInt(b.laun);
+			});
+			var referenceSalary = k0[0].laun;//(k0[0].laun + k0[1].laun)/2;
+			kennari.mismunur = (parseFloat(kennari.laun/referenceSalary)-1)*100;
+			
+			return kennari;
+		});
+		kennarar = kennarar.filter(kennari => kennari.launaflokkur == ("" + 6) || kennari.launaflokkur == ("" + 8) || kennari.launaflokkur == ("" + 10));
+		return kennarar;
+	};
+	exports.generate2016x = function(nemendafjoldi,afangafjoldi) {
+		var kennarar = exports.helper20162(nemendafjoldi,afangafjoldi);
+		kennarar = kennarar.filter(kennari => kennari.synidaemi != "2013");
+		kennarar = kennarar.filter(kennari => kennari.launaflokkur == ("" + 6) || kennari.launaflokkur == ("" + 8) || kennari.launaflokkur == ("" + 10));
+		kennarar = kennarar.map(function(kennari) {
+			if (kennari.skertur) {
+				kennari.mismunur = 0;
+				return kennari;
+			}
+
+			var k0 = kennarar.filter(kennariVidmid => kennariVidmid.aldur == kennari.aldur 
+				&& kennariVidmid.launaflokkur == kennari.launaflokkur && kennariVidmid.skertur && kennari.synidaemi == kennariVidmid.synidaemi);
+			var referenceSalary = k0[0].laun;//(k0[0].laun + k0[1].laun)/2;
+			kennari.mismunur = (parseFloat(kennari.laun/referenceSalary)-1)*100;
+			
+			return kennari;
+		});
+		kennarar = kennarar.filter(kennari => !kennari.skertur);
+		return kennarar;
+	};
   }
 )(this.generator = {})
