@@ -345,25 +345,39 @@
 			kennari.mismunur = (parseFloat(kennari.laun/referenceSalary)-1)*100;
 			return kennari;
 		});
-		kennarar = kennarar.filter(kennari => !kennari.skertur);
+		//kennarar = kennarar.filter(kennari => !kennari.skertur);
 		return kennarar;			
 	};
 	exports.generate2016z = function(nemendafjoldi,afangafjoldi) {
 		var kennarar = exports.helper20162(nemendafjoldi,afangafjoldi);
-		kennarar = kennarar.map(function(kennari) {
-			if (kennari.hasOwnProperty('mismunur'))
-				return kennari;
+		//var k0 = kennarar.filter(kennariVidmid => kennariVidmid.aldur =="30 ára-" && kennariVidmid.launaflokkur == "5" && kennariVidmid.synidaemi=="2013");
 
+		kennarar = kennarar.map(function(kennari) {
+			if (kennari.hasOwnProperty('mismunur')) {
+				return kennari;
+			}
+			
 			var k0 = kennarar.filter(kennariVidmid => kennariVidmid.aldur ==kennari.aldur && kennariVidmid.launaflokkur == kennari.launaflokkur && kennariVidmid.synidaemi=="2013");
 			k0.sort(function(a,b) {
 				return parseInt(a.launaflokkur)-parseInt(b.launaflokkur);
 			});
 			var referenceSalary = k0[0].laun;
 			kennari.mismunur = (parseFloat(kennari.laun/referenceSalary)-1)*100;
-			
 			return kennari;
 		});
 		kennarar = kennarar.filter(kennari => kennari.synidaemi != "2013");
+		/*
+		kennarar = kennarar.map(function(kennari) {
+			if (kennari.synidaemi == '2013') {
+				kennari.aldurshopur = kennari.aldur;
+				kennari.aldur = '2013';
+				return kennari;
+			}
+			else {
+				kennari.aldurshopur = kennari.aldur;
+				return kennari;
+			}
+		});*/
 		return kennarar;
 	};
 	exports.generate2016w = function(nemendafjoldi,afangafjoldi) {
@@ -377,12 +391,15 @@
 			k0.sort(function(a,b) {
 				return parseInt(a.laun)-parseInt(b.laun);
 			});
+			console.log(k0);
 			var referenceSalary = k0[0].laun;//(k0[0].laun + k0[1].laun)/2;
 			kennari.mismunur = (parseFloat(kennari.laun/referenceSalary)-1)*100;
 			
 			return kennari;
 		});
-		kennarar = kennarar.filter(kennari => kennari.launaflokkur == ("" + 6) || kennari.launaflokkur == ("" + 8) || kennari.launaflokkur == ("" + 10));
+		console.log(kennarar);
+		//kennarar = kennarar.filter(kennari => !kennari.skertur)
+		//kennarar = kennarar.filter(kennari => kennari.launaflokkur == ("" + 6) || kennari.launaflokkur == ("" + 8) || kennari.launaflokkur == ("" + 10));
 		return kennarar;
 	};
 	exports.generate2016x = function(nemendafjoldi,afangafjoldi) {
